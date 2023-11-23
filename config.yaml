@@ -2,7 +2,7 @@
 # https://apad.pro/easymosdns
 log:
     file: "./mosdns.log"
-    level: error
+    level: info
 
 data_providers:
   - tag: chinalist
@@ -386,14 +386,14 @@ servers:
         addr: "0.0.0.0:53"
       - protocol: tcp
         addr: "0.0.0.0:53"
-      #- protocol: http
-      #  addr: "127.0.0.1:9053"
-      #  url_path: "/dns-query"
-      #  get_user_ip_from_header: "X-Forwarded-For"
-      #- protocol: tls             
-      #  addr: "0.0.0.0:853"
-      #  cert: "/etc/mosdns/yourdomain.cert"  # TLS 所需证书文件。
-      #  key: "/etc/mosdns/yourdomain.key"    # TLS 所需密钥文件。
+      - protocol: http
+        addr: "0.0.0.0:9053"
+        url_path: "/dns-query"
+        get_user_ip_from_header: "X-Forwarded-For"
+      - protocol: tls             
+        addr: "0.0.0.0:853"
+        cert: "/etc/mosdns/ssl/fullchain.pem"  # TLS 所需证书文件。
+        key: "/etc/mosdns/ssl/privkey.pem"    # TLS 所需密钥文件。
 
 #api:
 #    http: "127.0.0.1:9080"
